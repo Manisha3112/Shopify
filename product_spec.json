@@ -1,0 +1,78 @@
+{
+    "data": {
+      "name": "webstore.get.shopify.products",
+      "event_type": "api_call",
+      "description": "get products from shopify",
+      "parameters": {
+        "properties": {
+          "host": {
+            "ref": "api.shopify.com"
+          }
+        }
+      },
+      "outputs": {
+        "success": {
+          "properties": {
+            "products": {
+              "ref": "response/data"
+            }
+          }
+        },
+        "error": {
+          "properties": {
+            "error_code": {
+              "ref": "error_object/error_code"
+            }
+          }
+        }
+      },
+      "response": {
+        "conversion": {
+          "required": false,
+          "type": ""
+        },
+        "conditions": {
+          "success": {
+            "fn::not_exists": [
+              {
+                "variable": {
+                  "default_value":"data"
+                }
+              }
+            ]
+          },
+          "error": {}
+        }
+      },
+      "request_configuration": {
+        "type": "single_request"
+      },
+      "request": {
+        "properties": {
+            "method": {
+               "default_value": "GET"
+            },
+            "http_protocal": {
+               "default_value": "https"
+            },
+            "path": {
+                "default_value": "/admin/api/2021-07/products.json"
+            },
+            "host": {
+                "ref": "parameters/host"
+            },
+            "headers": {
+               "type": "object",
+               "properties": {
+                  "Content-Type": {
+                     "default_value": "application/json"
+                   },
+                   "X-Shopify-Access-Token": {
+                      "ref": "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"
+              }
+            }
+          }
+        }
+    }
+    }
+}
