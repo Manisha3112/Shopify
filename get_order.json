@@ -13,7 +13,7 @@
       "outputs": {
         "success": {
           "properties": {
-            "products": {
+            "orders": {
               "ref": "response/data"
             }
           }
