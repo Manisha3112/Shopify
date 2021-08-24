@@ -1,8 +1,8 @@
 {
     "data": {
-      "name": "webstore.get.shopify.products",
+      "name": "webstore.get.shopify.products_count",
       "event_type": "api_call",
-      "description": "get products from shopify",
+      "description": "get count from shopify",
       "parameters": {
         "properties": {
           "host": {
@@ -13,7 +13,7 @@
       "outputs": {
         "success": {
           "properties": {
-            "products": {
+            "product": {
               "ref": "response/data"
             }
           }
@@ -36,7 +36,7 @@
             "fn::not_exists": [
               {
                 "variable": {
-                  "default_value":"products"
+                  "default_value":"product"
                 }
               }
             ]
@@ -56,7 +56,7 @@
                "default_value": "https"
             },
             "path": {
-                "default_value": "/admin/api/2021-07/products.json"
+                "default_value": "/admin/api/2021-07/products/count.json"
             },
             "host": {
                 "ref": "parameters/host"
